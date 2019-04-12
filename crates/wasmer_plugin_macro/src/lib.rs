@@ -31,19 +31,19 @@ fn handle_func(func: syn::ItemFn) -> TokenStream {
       panic!("fns marked with wasmer_plugin can only take 1 argument");
    }
    let ident = func.ident.clone();
-   let ident = Ident::new(&format!("_{}", ident.to_string()), Span::call_site());
+   let wasm_ident = Ident::new(&format!("_{}", ident.to_string()), Span::call_site());
    let ret = quote! {
       #func
       #[no_mangle]
       #[doc(hidden)]
       #[cfg(all(target_arch = "wasm32", not(target_os = "emscripten")))]
       #[allow(clippy::all)]
-      pub fn #ident(ptr: i32, len: i32) -> i32 {
+      pub fn #wasm_ident(ptr: i32, len: i32) -> i32 {
          let slice: &[u8] = unsafe { ::std::slice::from_raw_parts(ptr as _, len as _) };
-         let arg = convert_slice(slice);
+         let arg = wasmer_plugin::convert_slice(slice);
          let ret = #ident(arg);
-         let serialized = convert_ret(ret);
-         unsafe { ::std::ptr::replace(0 as _, serialized.len() as u32)}
+         let serialized = wasmer_plugin::convert_ret(&ret);
+         unsafe { ::std::ptr::replace(0 as _, serialized.len() as u32)};
          serialized.into_boxed_slice().as_ptr() as i32
       }
    };
