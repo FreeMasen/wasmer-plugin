@@ -65,7 +65,7 @@ perspective
 In the [./examples](./examples) folder there is a file called `simple.rs` 
 that includes an example of what a plugin might look like. It has a companion
 file `simple_expanded.rs` that includes the result of running 
-`cargo +nightly expand --example simple --target wasm32-unknown-unknown`.
+[`cargo +nightly expand --example simple --target wasm32-unknown-unknown`](https://crates.io/crates/cargo-expand).
 
 > note, these files are not traditional rust examples so running 
 > `cargo build --example simple` will fail.
