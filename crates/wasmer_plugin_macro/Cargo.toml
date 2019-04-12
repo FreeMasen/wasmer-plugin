@@ -1,0 +1,13 @@
+[package]
+name = "wasmer_plugin_macro"
+version = "0.1.0"
+authors = ["rfm <r@robertmasen.pizza>"]
+edition = "2018"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "0.6"
+proc-macro2 = "0.4"
+syn = { version = "0.15", features = ["visit", "full"] }
