@@ -62,7 +62,7 @@ is not very efficient from a space (or probably speed)
 perspective
 
 ## Example
-In the (./examples)[./examples] folder there is a file called `simple.rs` 
+In the [./examples](./examples) folder there is a file called `simple.rs` 
 that includes an example of what a plugin might look like. It has a companion
 file `simple_expanded.rs` that includes the result of running 
 `cargo +nightly expand --example simple --target wasm32-unknown-unknown`.
