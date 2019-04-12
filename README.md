@@ -27,8 +27,8 @@ Let's first cover all of the steps that would need to happen to allow this.
     1. Deserialize shared data
     1. Move on to the next plugin?
 
-Of all of the steps above, a plugin developer really should have to think about 2.2. All of the other steps should
-be handled by the parent process.
+Of all of the steps above, a plugin developer really should have to think about 2.2 --
+All of the other steps should be handled by the parent process.
 
 ## How
 `wasmer-plugin` utilizes [bincode](https://github.com/TyOverby/bincode) to pass
@@ -61,3 +61,11 @@ take one argument and return one argument.
 is not very efficient from a space (or probably speed) 
 perspective
 
+## Example
+In the (./examples)[./examples] folder there is a file called `simple.rs` 
+that includes an example of what a plugin might look like. It has a companion
+file `simple_expanded.rs` that includes the result of running 
+`cargo +nightly expand --example simple --target wasm32-unknown-unknown`.
+
+> note, these files are not traditional rust examples so running 
+> `cargo build --example simple` will fail.
