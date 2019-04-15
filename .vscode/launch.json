@@ -1,0 +1,157 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'example_runner_lib'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=example_runner"
+                ],
+                "filter": {
+                    "name": "example_runner_lib",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'example_runner'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=example_runner",
+                    "--package=example_runner"
+                ],
+                "filter": {
+                    "name": "example_runner",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'example_runner'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=example_runner",
+                    "--package=example_runner"
+                ],
+                "filter": {
+                    "name": "example_runner",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'wasmer-plugin'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=wasmer-plugin"
+                ],
+                "filter": {
+                    "name": "wasmer-plugin",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'simple_expanded'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=simple_expanded",
+                    "--package=wasmer-plugin"
+                ],
+                "filter": {
+                    "name": "simple_expanded",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'simple_expanded'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=simple_expanded",
+                    "--package=wasmer-plugin"
+                ],
+                "filter": {
+                    "name": "simple_expanded",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'simple'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=simple",
+                    "--package=wasmer-plugin"
+                ],
+                "filter": {
+                    "name": "simple",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'simple'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=simple",
+                    "--package=wasmer-plugin"
+                ],
+                "filter": {
+                    "name": "simple",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

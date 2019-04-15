@@ -1,0 +1,18 @@
+[package]
+name = "example_runner"
+version = "0.1.0"
+authors = ["rfm <r@robertmasen.pizza>"]
+edition = "2018"
+
+[dependencies]
+wasmer-runtime = {version = "0.3", optional = true }
+serde = "1"
+serde_derive = "1"
+bincode = "1"
+
+[features]
+default = ["wasmer-runtime"]
+lib_only = []
+
+[lib]
+name = "example_runner_lib"

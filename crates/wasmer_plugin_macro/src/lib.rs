@@ -38,13 +38,16 @@ fn handle_func(func: syn::ItemFn) -> TokenStream {
       #[doc(hidden)]
       #[cfg(all(target_arch = "wasm32", not(target_os = "emscripten")))]
       #[allow(clippy::all)]
-      pub fn #wasm_ident(ptr: i32, len: i32) -> i32 {
-         let slice: &[u8] = unsafe { ::std::slice::from_raw_parts(ptr as _, len as _) };
-         let arg = wasmer_plugin::convert_slice(slice);
+      pub fn #wasm_ident(ptr: i32, len: u32) -> i32 {
+         let mut bytes: &[u8] = unsafe { ::std::slice::from_raw_parts(ptr as _, len as _) };
+         let arg = wasmer_plugin::convert_slice(bytes);
          let ret = #ident(arg);
-         let serialized = wasmer_plugin::convert_ret(&ret);
-         unsafe { ::std::ptr::replace(0 as _, serialized.len() as u32)};
-         serialized.into_boxed_slice().as_ptr() as i32
+         let serialized = wasmer_plugin::convert_ret(ret);
+         let len = serialized.len() as u32;
+         unsafe { 
+            ::std::ptr::write(1 as _, len);
+         }
+         serialized.as_ptr() as i32
       }
    };
    ret.into()

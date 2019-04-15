@@ -1,0 +1,13 @@
+[package]
+name = "example_plugin"
+version = "0.1.0"
+authors = ["rfm <r@robertmasen.pizza>"]
+edition = "2018"
+
+[dependencies]
+example_runner = { path = "../example_runner", default-features = false, features = ["lib_only"]}
+wasmer-plugin = { path = "../../" }
+
+[lib]
+crate-type = ["cdylib"]
+

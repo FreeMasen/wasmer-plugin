@@ -13,4 +13,9 @@ serde_derive = "1"
 [workspace]
 members = [
     "./crates/wasmer_plugin_macro",
+    "./examples/example_plugin",
+    "./examples/example_runner",
 ]
+
+[profile.release]
+lto = true
