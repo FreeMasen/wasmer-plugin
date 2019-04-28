@@ -3,6 +3,7 @@ name = "wasmer-plugin"
 version = "0.1.0"
 authors = ["rfm <r@robertmasen.pizza>"]
 edition = "2018"
+license = "MIT/Apache-2.0"
 
 [dependencies]
 wasmer_plugin_macro = {path = "./crates/wasmer_plugin_macro"}
